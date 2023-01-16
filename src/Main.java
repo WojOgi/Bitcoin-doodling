@@ -14,16 +14,19 @@ public class Main {
         URL_Service urlService = new URL_Service(); //urlService is responsible for extracting URL
 
         HttpClient client = HttpClient.newHttpClient();
+        // utworzenie requestu można przenieść do metody / klasy
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(urlService.getUrlAsString()))
                 .GET() // GET is default
                 .build();
 
+        // drugi parametr może być w tej samej linii
         HttpResponse<String> response = client.send(request,
                 HttpResponse.BodyHandlers.ofString());
 
         String responseBodyString = response.body();
 
+        // tutaj też bym przeniósł logikę do metody / klasy
         String sequenceToBeFound = "The live price of BTC is ";
 
         Pattern word = Pattern.compile(sequenceToBeFound);
@@ -38,6 +41,7 @@ public class Main {
         }
 
     }
+    // a pan kolega nie formatuje kodu zanim wypchnie go na repo? Co to jest za "+ ? :O
     private static void printExtractedBTCPriceAndSaveToDropbox(String responseBodyString, Matcher match) throws IOException {
         String extractedBTCPrice = responseBodyString.substring(match.end() + 0, match.end() + 11);
         System.out.println("BTC price is currently: "+ extractedBTCPrice);
