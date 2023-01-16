@@ -5,3 +5,12 @@
 
 =======
 >>>>>>> Bitcoin_doodling/master
+
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+/out/
+envs
