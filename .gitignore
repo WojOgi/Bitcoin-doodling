@@ -1,2 +1,4 @@
 /out/
-C:\Users\ogieglw\IdeaProjects\BitcoinDoodling\.idea
+!**/out
+!**/.idea
+
