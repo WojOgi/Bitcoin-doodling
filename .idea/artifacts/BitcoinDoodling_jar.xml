@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="BitcoinDoodling:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/BitcoinDoodling_jar</output-path>
+    <root id="archive" name="BitcoinDoodling.jar">
+      <element id="module-output" name="BitcoinDoodling" />
+    </root>
+  </artifact>
+</component>
