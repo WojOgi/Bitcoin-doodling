@@ -3,7 +3,7 @@ import java.util.Date;
 
 public class DateAndTimeService {
 
-    private int timeIntervalInMiliseconds = 2000;
+    private int timeIntervalInMiliseconds = 5*60*1000;
 
     public int getTimeIntervalInMiliseconds() {
         return timeIntervalInMiliseconds;

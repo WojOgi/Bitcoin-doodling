@@ -10,7 +10,7 @@ public class Main {
         for(int i = 0; i<5; ) {
             extractLiveBTC_Price();
             DateAndTimeService.displayLocalDateAndTime();
-            System.out.println("next reading in " + dateAndTimeService.getTimeIntervalInMiliseconds()/1000 + " seconds");
+            System.out.println("next reading in " + dateAndTimeService.getTimeIntervalInMiliseconds()/(60*1000) + " minutes");
             Thread.sleep(dateAndTimeService.getTimeIntervalInMiliseconds());
             i++;
         }
