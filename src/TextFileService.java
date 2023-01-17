@@ -6,7 +6,6 @@ import java.nio.file.Paths;
 
 public class TextFileService {
 
-    private String textToWriteToFile;
     Path path = Paths.get("C:\\Users\\ogieglw\\Dropbox\\! temp stuff\\doodle.txt");
 
     public TextFileService() {
