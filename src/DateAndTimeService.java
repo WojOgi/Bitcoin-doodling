@@ -4,12 +4,17 @@ import java.util.Date;
 public class DateAndTimeService {
 
     private static final SimpleDateFormat FORMAT = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+
+    private double timeIntervalInMinutes = 1;
+
+    public void setTimeIntervalInMinutes(double timeIntervalInMinutes) {
+        this.timeIntervalInMinutes = timeIntervalInMinutes;
+    }
     // pole statyczne jest współdzielone przez wszystkie instancje, format jest tylko jeden oraz
-    private int timeIntervalInMiliseconds = 5*60*1000;
 //minuty, private static final i DUZYMI
 
-    public int getTimeIntervalInMiliseconds() {
-        return timeIntervalInMiliseconds;
+    public double getTimeIntervalInMinutes() {
+        return timeIntervalInMinutes;
     }
 
     public static void displayLocalDateAndTime() {

@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -6,12 +7,20 @@ public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
 
         DateAndTimeService dateAndTimeService = new DateAndTimeService();
+        Scanner scanner = new Scanner(System.in);
+        int nrOfReadouts;
 
-        for (int i = 0; i < 5; ) {
+        System.out.println("Set time interval for the readout in minutes: ");
+        dateAndTimeService.setTimeIntervalInMinutes(scanner.nextDouble());
+        System.out.println("Set number of readouts: ");
+        nrOfReadouts = scanner.nextInt();
+
+
+        for (int i = 0; i < nrOfReadouts; ) {
             extractLiveBTCPrice();
             DateAndTimeService.displayLocalDateAndTime();
-            System.out.println("next reading in " + dateAndTimeService.getTimeIntervalInMiliseconds() / (60 * 1000) + " minutes");
-            Thread.sleep(dateAndTimeService.getTimeIntervalInMiliseconds());
+            System.out.println("next reading in " + dateAndTimeService.getTimeIntervalInMinutes() + " minutes");
+            Thread.sleep((long) (1000L *60*dateAndTimeService.getTimeIntervalInMinutes()));
             i++;
         }
     }
