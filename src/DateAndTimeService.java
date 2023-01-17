@@ -8,7 +8,6 @@ public class DateAndTimeService {
 
 
 
-
     public int getTimeIntervalInMiliseconds() {
         return timeIntervalInMiliseconds;
     }
