@@ -8,7 +8,7 @@ public class Main {
         DateAndTimeService dateAndTimeService = new DateAndTimeService();
 
         for (int i = 0; i < 5; ) {
-            extractLiveBTC_Price();
+            extractLiveBTCPrice();
             DateAndTimeService.displayLocalDateAndTime();
             System.out.println("next reading in " + dateAndTimeService.getTimeIntervalInMiliseconds() / (60 * 1000) + " minutes");
             Thread.sleep(dateAndTimeService.getTimeIntervalInMiliseconds());
@@ -16,10 +16,10 @@ public class Main {
         }
     }
 
-    private static void extractLiveBTC_Price() throws IOException, InterruptedException {
+    private static void extractLiveBTCPrice() throws IOException, InterruptedException {
         //creates instances of my classes
         TextFileService textFileService = new TextFileService(); //textFileService is responsible for writing stuff to a text file on my Dropbox
-        URL_Service urlService = new URL_Service(); //urlService is responsible for extracting URL
+        UrlService urlService = new UrlService(); //urlService is responsible for extracting URL
 
         String responseBodyString = HttpService.extractResponseFromURL(urlService);
 
