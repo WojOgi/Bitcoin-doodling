@@ -7,14 +7,13 @@ public class Main {
 
         DateAndTimeService dateAndTimeService = new DateAndTimeService();
 
-        for(int i = 0; i<5; ) {
+        for (int i = 0; i < 5; ) {
             extractLiveBTC_Price();
             DateAndTimeService.displayLocalDateAndTime();
-            System.out.println("next reading in " + dateAndTimeService.getTimeIntervalInMiliseconds()/(60*1000) + " minutes");
+            System.out.println("next reading in " + dateAndTimeService.getTimeIntervalInMiliseconds() / (60 * 1000) + " minutes");
             Thread.sleep(dateAndTimeService.getTimeIntervalInMiliseconds());
             i++;
         }
-
     }
 
     private static void extractLiveBTC_Price() throws IOException, InterruptedException {
