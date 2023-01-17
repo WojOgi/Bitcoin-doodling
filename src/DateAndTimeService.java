@@ -12,12 +12,6 @@ public class DateAndTimeService {
         return timeIntervalInMiliseconds;
     }
 
-    public void setTimeIntervalInMiliseconds(int timeIntervalInMiliseconds) {
-        this.timeIntervalInMiliseconds = timeIntervalInMiliseconds;
-    }
-    //usunąć
-
-
     public static void displayLocalDateAndTime() {
         System.out.println(FORMAT.format(new Date()));
     }

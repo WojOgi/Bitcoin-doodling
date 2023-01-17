@@ -34,7 +34,7 @@ public class Main {
     }
 
     private static void printExtractedBTCPriceAndSaveToDropbox(String responseBodyString, Matcher match) throws IOException {
-        String extractedBTCPrice = responseBodyString.substring(match.end() + 0, match.end() + 11);
+        String extractedBTCPrice = responseBodyString.substring(match.end(), match.end() + 11);
         System.out.println("BTC price is currently: " + extractedBTCPrice);
         TextFileService textFileService = new TextFileService();
         textFileService.writeTextToFile("BTC price is currently: " + extractedBTCPrice);
