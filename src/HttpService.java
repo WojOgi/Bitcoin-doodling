@@ -10,7 +10,7 @@ public class HttpService {
         //zastanowic sie czy jako parameter czy w polu
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(urlService.getUrlAsString()))
-                .GET() // GET is default
+                .GET()
                 .build();
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());

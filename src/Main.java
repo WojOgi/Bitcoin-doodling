@@ -7,24 +7,25 @@ public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
 
         DateAndTimeService dateAndTimeService = new DateAndTimeService();
+        MessagesToClient messagesToClient = new MessagesToClient();
         Scanner scanner = new Scanner(System.in);
         int nrOfReadouts;
 
-        System.out.println("Set time interval for the readout in minutes: ");
+        messagesToClient.timeIntervalQuery();
         dateAndTimeService.setTimeIntervalInMinutes(scanner.nextDouble());
-        System.out.println("Set number of readouts: ");
+        messagesToClient.nrReadoutsQuery();
         nrOfReadouts = scanner.nextInt();
 
 
         for (int i = 0; i < nrOfReadouts; ) {
             extractLiveBTCPrice();
             DateAndTimeService.displayLocalDateAndTime();
-            System.out.println("next reading in " + dateAndTimeService.getTimeIntervalInMinutes() + " minutes. Reading nr. "
-                    + (i+1) + " done out of " + nrOfReadouts + " total.");
-            Thread.sleep((long) (1000L *60*dateAndTimeService.getTimeIntervalInMinutes()));
+            System.out.println(("next reading in " + dateAndTimeService.getTimeIntervalInMinutes() + " minutes. Reading nr. "
+                    + (i + 1) + " done out of " + nrOfReadouts + " total."));
+            Thread.sleep((long) (1000L * 60 * dateAndTimeService.getTimeIntervalInMinutes()));
             i++;
-            if(i == nrOfReadouts){
-                System.out.println("End of the program.");
+            if (i == nrOfReadouts) {
+                MessagesToClient.endOfProgramMessage();
             }
         }
     }
@@ -51,6 +52,5 @@ public class Main {
         System.out.println("BTC price is currently: " + extractedBTCPrice);
         TextFileService textFileService = new TextFileService();
         textFileService.writeTextToFile("BTC price is currently: " + extractedBTCPrice);
-
     }
 }

@@ -10,8 +10,6 @@ public class DateAndTimeService {
     public void setTimeIntervalInMinutes(double timeIntervalInMinutes) {
         this.timeIntervalInMinutes = timeIntervalInMinutes;
     }
-    // pole statyczne jest współdzielone przez wszystkie instancje, format jest tylko jeden oraz
-//minuty, private static final i DUZYMI
 
     public double getTimeIntervalInMinutes() {
         return timeIntervalInMinutes;
@@ -20,5 +18,4 @@ public class DateAndTimeService {
     public static void displayLocalDateAndTime() {
         System.out.println(FORMAT.format(new Date()));
     }
-    //tutaj nie ma juz konstruktora FORMAT
 }
