@@ -3,23 +3,19 @@ import java.util.Date;
 
 public class DateAndTimeService {
 
-    private int timeIntervalInMiliseconds = 2*60*1000;
+    private static final SimpleDateFormat FORMAT = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
+    private double timeIntervalInMinutes = 1;
 
-
-
-    public int getTimeIntervalInMiliseconds() {
-        return timeIntervalInMiliseconds;
+    public void setTimeIntervalInMinutes(double timeIntervalInMinutes) {
+        this.timeIntervalInMinutes = timeIntervalInMinutes;
     }
 
-    public void setTimeIntervalInMiliseconds(int timeIntervalInMiliseconds) {
-        this.timeIntervalInMiliseconds = timeIntervalInMiliseconds;
+    public double getTimeIntervalInMinutes() {
+        return timeIntervalInMinutes;
     }
-
 
     public static void displayLocalDateAndTime() {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        Date date = new Date();
-        System.out.println(formatter.format(date));
+        System.out.println(FORMAT.format(new Date()));
     }
 }

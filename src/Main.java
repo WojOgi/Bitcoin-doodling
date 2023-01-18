@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -6,20 +7,33 @@ public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
 
         DateAndTimeService dateAndTimeService = new DateAndTimeService();
+        MessagesToClient messagesToClient = new MessagesToClient();
+        Scanner scanner = new Scanner(System.in);
 
-        for (int i = 0; i < 5; ) {
-            extractLiveBTC_Price();
+        int nrOfReadouts;
+
+        messagesToClient.timeIntervalQuery();
+        dateAndTimeService.setTimeIntervalInMinutes(scanner.nextDouble());
+        messagesToClient.nrReadoutsQuery();
+        nrOfReadouts = scanner.nextInt();
+
+        for (int i = 0; i < nrOfReadouts; ) {
+            extractLiveBTCPrice();
             DateAndTimeService.displayLocalDateAndTime();
-            System.out.println("next reading in " + dateAndTimeService.getTimeIntervalInMiliseconds() / (60 * 1000) + " minutes");
-            Thread.sleep(dateAndTimeService.getTimeIntervalInMiliseconds());
+            System.out.println(("next reading in " + dateAndTimeService.getTimeIntervalInMinutes() + " minutes. Reading nr. "
+                    + (i + 1) + " done out of " + nrOfReadouts + " total."));
+            Thread.sleep((long) (1000L * 60 * dateAndTimeService.getTimeIntervalInMinutes()));
             i++;
+            if (i == nrOfReadouts) {
+                MessagesToClient.endOfProgramMessage();
+            }
         }
     }
 
-    private static void extractLiveBTC_Price() throws IOException, InterruptedException {
+    private static void extractLiveBTCPrice() throws IOException, InterruptedException {
         //creates instances of my classes
         TextFileService textFileService = new TextFileService(); //textFileService is responsible for writing stuff to a text file on my Dropbox
-        URL_Service urlService = new URL_Service(); //urlService is responsible for extracting URL
+        UrlService urlService = new UrlService(); //urlService is responsible for extracting URL
 
         String responseBodyString = HttpService.extractResponseFromURL(urlService);
 
@@ -34,10 +48,9 @@ public class Main {
     }
 
     private static void printExtractedBTCPriceAndSaveToDropbox(String responseBodyString, Matcher match) throws IOException {
-        String extractedBTCPrice = responseBodyString.substring(match.end() + 0, match.end() + 11);
+        String extractedBTCPrice = responseBodyString.substring(match.end(), match.end() + 11);
         System.out.println("BTC price is currently: " + extractedBTCPrice);
         TextFileService textFileService = new TextFileService();
         textFileService.writeTextToFile("BTC price is currently: " + extractedBTCPrice);
-
     }
 }
