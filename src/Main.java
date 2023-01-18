@@ -19,7 +19,8 @@ public class Main {
         for (int i = 0; i < nrOfReadouts; ) {
             extractLiveBTCPrice();
             DateAndTimeService.displayLocalDateAndTime();
-            System.out.println("next reading in " + dateAndTimeService.getTimeIntervalInMinutes() + " minutes. " + (i+1) + " readings out of " + nrOfReadouts + " remaining.");
+            System.out.println("next reading in " + dateAndTimeService.getTimeIntervalInMinutes() + " minutes. Reading nr. "
+                    + (i+1) + " done out of " + nrOfReadouts + " total.");
             Thread.sleep((long) (1000L *60*dateAndTimeService.getTimeIntervalInMinutes()));
             i++;
             if(i == nrOfReadouts){
