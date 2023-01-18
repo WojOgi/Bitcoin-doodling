@@ -9,13 +9,13 @@ public class Main {
         DateAndTimeService dateAndTimeService = new DateAndTimeService();
         MessagesToClient messagesToClient = new MessagesToClient();
         Scanner scanner = new Scanner(System.in);
+
         int nrOfReadouts;
 
         messagesToClient.timeIntervalQuery();
         dateAndTimeService.setTimeIntervalInMinutes(scanner.nextDouble());
         messagesToClient.nrReadoutsQuery();
         nrOfReadouts = scanner.nextInt();
-
 
         for (int i = 0; i < nrOfReadouts; ) {
             extractLiveBTCPrice();
